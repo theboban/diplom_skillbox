@@ -30,6 +30,7 @@ h2 {
 }
 
 /* Первый экран */
+
 #first-screen-back {
 	position: relative;
 	max-width: 1920px;
@@ -38,7 +39,7 @@ h2 {
 	background-size: cover;
 }
 
-/* Хедер */
+/* Шапка */
 
 #header {
 	display: flex;
