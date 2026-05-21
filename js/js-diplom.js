@@ -34,26 +34,28 @@ $(function(){
 	});
 });
 
-// Скроллинг 
+// Скроллинг для кнопок с data-scroll атрибутом
 
 $(document).ready(function(){
-    $('.more-button, .conteiner-button__button_price').click( function(){ // ловим клик по ссылке с классом go_to
-	var scroll_el = $(this).attr('href'); // возьмем содержимое атрибута href, должен быть селектором, т.е. например начинаться с # или .
-        if ($(scroll_el).length != 0) { // проверим существование элемента чтобы избежать ошибки
-	    $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 700); // анимируем скроолинг к элементу scroll_el
-        }
-	    return false; // выключаем стандартное действие
+    $('.more-button, .conteiner-button__button_price').click( function(){
+	var scroll_el = $(this).data('scroll');
+	if (scroll_el && $(scroll_el).length != 0) {
+	    $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 700);
+	}
+	return false;
     });
 });
 
-// Плавный сколлинг
+// Плавный скроллинг к якорям (для меню и ссылок)
 
 $(function(){
-        $("a[href^='#']").click(function(){
-                var _href = $(this).attr("href");
-                $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
-                return false;
-        });
+	$("a[href^='#']").click(function(){
+		var _href = $(this).attr("href");
+		if ($(_href).length != 0) {
+			$("html, body").animate({scrollTop: $(_href).offset().top+"px"}, 700);
+		}
+		return false;
+	});
 });
 
 // Слайдер
